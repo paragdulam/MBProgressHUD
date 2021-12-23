@@ -99,7 +99,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 
     [self setupViews];
     [self updateIndicators];
-    [self registerForNotifications];
+//    [self registerForNotifications];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -122,7 +122,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 }
 
 - (void)dealloc {
-    [self unregisterFromNotifications];
+//    [self unregisterFromNotifications];
 }
 
 #pragma mark - Show & hide
@@ -738,32 +738,32 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
 
 #pragma mark - Notifications
 
-- (void)registerForNotifications {
-#if !TARGET_OS_TV && !TARGET_OS_MACCATALYST
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-
-    [nc addObserver:self selector:@selector(statusBarOrientationDidChange:)
-               name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-#endif
-}
-
-- (void)unregisterFromNotifications {
-#if !TARGET_OS_TV && !TARGET_OS_MACCATALYST
-    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-    [nc removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-#endif
-}
-
-#if !TARGET_OS_TV && !TARGET_OS_MACCATALYST
-- (void)statusBarOrientationDidChange:(NSNotification *)notification {
-    UIView *superview = self.superview;
-    if (!superview) {
-        return;
-    } else {
-        [self updateForCurrentOrientationAnimated:YES];
-    }
-}
-#endif
+//- (void)registerForNotifications {
+//#if !TARGET_OS_TV && !TARGET_OS_MACCATALYST
+//    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+//
+//    [nc addObserver:self selector:@selector(statusBarOrientationDidChange:)
+//               name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+//#endif
+//}
+//
+//- (void)unregisterFromNotifications {
+//#if !TARGET_OS_TV && !TARGET_OS_MACCATALYST
+//    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+//    [nc removeObserver:self name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
+//#endif
+//}
+//
+//#if !TARGET_OS_TV && !TARGET_OS_MACCATALYST
+//- (void)statusBarOrientationDidChange:(NSNotification *)notification {
+//    UIView *superview = self.superview;
+//    if (!superview) {
+//        return;
+//    } else {
+//        [self updateForCurrentOrientationAnimated:YES];
+//    }
+//}
+//#endif
 
 - (void)updateForCurrentOrientationAnimated:(BOOL)animated {
     // Stay in sync with the superview in any case
